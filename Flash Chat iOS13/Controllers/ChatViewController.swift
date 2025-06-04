@@ -69,15 +69,22 @@ class ChatViewController: UIViewController {
                 K.FStore.bodyField: messageBody,
                 K.FStore.dateField: Date().timeIntervalSince1970
             ]
+                                                               
+                                                               
             ){error in
                 if let error = error {
                     print("Error adding document: \(error)")
                 }
+                else {
+                    print("Successfully added document")
+                    DispatchQueue.main.async {
+                        self.messageTextfield.text = ""
+                    }
+                   
+                }
                 
             }
-            
-            let newMessage = Message(sender: messageSender, body: messageBody)
-
+          
         }
         
         
